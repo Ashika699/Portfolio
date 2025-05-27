@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ashika Baddam | Full Stack Developer</title>
+  <style>
+    :root {
+      --primary-color: #004080;
+      --hover-color: #002b59;
+      --bg-light: #f4f8fc;
+      --text-dark: #1c1c1c;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .navbar h1 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--primary-color);
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: var(--hover-color);
+      border-bottom: 2px solid var(--hover-color);
+    }
+
+    header.hero {
+      background: linear-gradient(to right, #004080, #337ab7);
+      text-align: center;
+      color: var(--white);
+      padding: 5rem 2rem;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--white);
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .btn-primary {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.6rem;
+      background-color: var(--white);
+      color: var(--primary-color);
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--hover-color);
+      color: var(--white);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 2rem;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      border-left: 5px solid var(--primary-color);
+      padding-left: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Skills section (original layout with flex) */
+    #skills .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+    }
+
+    #skills .card {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      flex: 1 1 calc(33% - 1rem);
+      min-width: 250px;
+      transition: 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    #skills .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .experience-block, .project-card {
+      margin-bottom: 2rem;
+    }
+
+    .experience-block ul {
+      margin-left: 1.2rem;
+    }
+
+    footer {
+      background-color: #1c1c1c;
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer a {
+      color: #99ccff;
+      text-decoration: none;
+    }
+
+    /* -------- Responsive Mobile Styles -------- */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      #skills .grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #skills .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+
+      .btn-primary {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar">
+      <h1>Ashika Baddam</h1>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <img src="images/port-modified.png" alt="Profile Picture" class="profile-pic" />
+    <h1>Hello, I'm Ashika</h1>
+    <p>Java Full Stack Developer</p>
+    <a href="#contact" class="btn-primary">Let's Connect</a>
+  </header>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card"><strong>Frontend</strong><br>React, Angular, TypeScript, Bootstrap, HTML5, CSS3, Redux</div>
+      <div class="card"><strong>Backend</strong><br>Java 17, Spring Boot, Spring Cloud, Spring Security, Spring Data JPA, Drools, Quartz Scheduler</div>
+      <div class="card"><strong>APIs & Integration</strong><br>RESTful APIs, GraphQL, Netflix DGS, SAML, OAuth2</div>
+      <div class="card"><strong>Databases</strong><br>Oracle, MySQL, MongoDB</div>
+      <div class="card"><strong>Cloud</strong><br>Azure Kubernetes Services (AKS), AWS (EC2, S3, RDS)</div>
+      <div class="card"><strong>DevOps & CI/CD</strong><br>Jenkins, GitHub Actions, Terraform, Azure Resource Manager (ARM) templates</div>
+      <div class="card"><strong>Others</strong><br>Kafka, Liquibase, ELK, Prometheus, Git, GitHub, JUnit, Mockito, Agile, Scrum</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card card">
+      <img src="images/financial-project-vector-39126484.jpg" alt="Financial Dashboard">
+      <h3>Financial Dashboard</h3>
+      <p>Developed a real-time financial analytics dashboard for JPMorgan’s loan systems using React and Apache Kafka. Streamed live loan data via Kafka to backend microservices, enabling instant updates and visualizations on the frontend. Integrated WebSockets for live UI refreshes and MongoDB for historical data storage. Implemented custom alerts for risk thresholds and SLA breaches. Enhanced decision-making by delivering actionable insights to loan officers and risk managers.
+</p>
+    </div>
+    <div class="project-card card">
+      <img src="images/The_Bottom_Line.jpg" alt="E-commerce System">
+      <h3>E-commerce System</h3>
+      <p>This E-commerce system is built using Angular for the frontend and Spring Boot for the backend, offering a responsive and scalable platform for online shopping. It integrates Razorpay for secure and seamless payment processing, ensuring real-time transaction handling. Twilio is used for sending instant SMS and email notifications to users for order updates and authentication. The system supports user registration, product listing, cart management, order placement, and admin controls. It's designed with RESTful APIs, robust security, and a clean user experience.</p>
+    </div>
+    <div class="project-card card">
+      <img src="images/1677748698.jpg" alt="Cloud Management Tool">
+      <h3>Cloud Management Tool</h3>
+      <p>A centralized dashboard designed to monitor and manage cloud resources across both AWS and Azure platforms. It integrates Terraform automation to streamline infrastructure provisioning, scaling, and teardown. Users can view resource usage, cost estimates, and deployment statuses in real time. The tool simplifies multi-cloud operations, enabling efficient and consistent infrastructure management from a single interface.</p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-block">
+      <h3>JP Morgan Chase & Co.</h3>
+      <p><em>Aug 2024 – Present</em></p>
+      <ul>
+        <li>Developed cloud-native microservices and real-time dashboards using Java, Spring Boot, React, and Redux, improving responsiveness by 40% in high-volume trading apps</li>
+        <li>Implemented Kafka-based event-driven architecture to decouple services, cutting latency by 50% and boosting scalability on Azure Kubernetes Services (AKS)</li>
+        <li>Automated credit underwriting and compliance reporting with Drools, Liquibase, and Quartz Scheduler, reducing loan processing time by 35%</li>
+        <li>Built secure, high-performance APIs using Spring Security, GraphQL (Netflix DGS), and optimized data access with Redis, JPA, and Oracle 19c</li>
+        <li>Streamlined CI/CD and ensured regulatory compliance via Jenkins, GitHub Actions, Terraform, and audit-ready logging aligned with GDPR, FFIEC, and FR Y-9</li>
+      </ul>
+    </div>
+    <div class="experience-block">
+      <h3>Zensar Technologies</h3>
+      <p><em>May 2019 – June 2023</em></p>
+      <ul>
+        <li>Led the development of a high-performance e-commerce platform using Angular, Bootstrap, and Spring Boot, boosting user engagement by 30% and reducing API response times by 45%</li>
+        <li>Integrated payment gateways (Razorpay, Paytm) and Twilio SMS services, streamlining transactions and increasing successful payments by 25%</li>
+        <li>Implemented Apache Kafka for real-time event streaming, enhancing data processing speed by 50% and delivering instant updates to improve user experience</li>
+        <li>Optimized backend performance through efficient REST API design, MySQL and MongoDB tuning, and Redis caching, resulting in faster data retrieval and improved responsiveness</li>
+        <li>Ensured scalability, reliability, and code quality by deploying on AWS (EC2, S3, RDS), setting up ELK/Prometheus for monitoring, and conducting rigorous testing with JUnit and Mockito</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:baddamashika@gmail.com">baddamashika@gmail.com</a></p>
+    <p>Phone: +1 (337) 287-9484</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/baddam-ashika/" target="https://www.linkedin.com/in/baddam-ashika/">Linkedin</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ashika Baddam. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
